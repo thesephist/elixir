@@ -1,0 +1,63 @@
+@mixin cover {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.intro {
+    text-align: center;
+    color: #aaa;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.question {
+
+    text-align: center;
+    color: #555;
+    font-size: 50px;
+
+    input {
+        text-align: center;
+        font-style: italic;
+        color: #333;
+        font-size: 50px;
+        border-radius: 6px;
+
+        &:hover {
+            background: #eee;
+        }
+
+        &:focus {
+            background: #eee;
+            outline: none;
+        }
+
+    }
+
+}
+
+.prompt-container {
+    
+    @include cover;
+    
+}
+
+.dot-container {
+
+    @include cover;
+
+    .dot {
+        background: #aaa;
+        border-radius: $dot-radius;
+        width: 2 * $dot-radius;
+        height: 2 * $dot-radius;
+        margin: 20px;
+
+        .colored {
+            background: $bg-color;
+        }
+
+    }
+
+}

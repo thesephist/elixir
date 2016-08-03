@@ -1,0 +1,43 @@
+/* vars */
+$bg-color: #e9e9e9;
+$font-family: "Baskerville", "Times New Roman", serif;
+$font-color: #333333;
+
+$dot-radius: 12px;
+$dot-color: #987654;
+$accent-color: #234567;
+
+/* resets */
+
+body, html, iframe, div, input {
+    margin: 0;
+    outline: none;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body, input {
+    background: $bg-color;
+    height: 100vh;
+    width: 100vw;
+    font-family: $font-family;
+
+    &::after {
+        content: "";
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 6px;
+        width: 100%;
+        background: $accent-color;
+    }
+
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
