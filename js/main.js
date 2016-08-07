@@ -1,7 +1,15 @@
 // main elixir JS file
 
+// initializing app object
 var Elixir = {
+    e: {},
+    f: {},
+    c: {}
+}
+
+Elixir = {
     e: { // events
+        "keydown input": Elixir.f.go,
         "click button.go": Elixir.f.go
     },
 
@@ -48,6 +56,8 @@ var Elixir = {
         },
 
         go: function(evt) {
+            if (!evt || evt.keyCode != 13) return;
+
             // master task runner for "go" button
             var dateObject = Elixir.f.getBirthday();
             
