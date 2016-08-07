@@ -4,7 +4,7 @@ var $ = document.querySelector.bind(document),
     $$ = document.querySelectorAll.bind(document);
 
 function eventAdder(selector, eventName, callback) {
-    var targets = $(selector) || [],
+    var targets = $$(selector) || [],
         tLength = targets.length;
 
     for (i = 0; i < tLength; i++) {
@@ -14,4 +14,16 @@ function eventAdder(selector, eventName, callback) {
     return targets;
 }
 
+function scrollToHeight(targetPos, milliseconds) {
+    var currentPos = document.body.scrollTop;
+    var counter = 0;
+
+    var scrollInterval = setInterval(function(){
+        document.body.scrollTop = targetPos + (currentPos - targetPos) * (milliseconds / 16 - counter) / milliseconds * 16;
+        counter ++;
+
+        // add a halted? check here
+        if (counter > milliseconds / 16) clearInterval(scrollInterval);
+    }, 16)
+}
 

@@ -9,23 +9,23 @@ var Elixir = {
 
 Elixir = {
     e: { // events
-        "keydown input": Elixir.f.go,
-        "click button.go": Elixir.f.go
+        "keydown input": "go",
+        "click button.go": "go"
     },
 
     f: { // functions
       
         getDays: function(month, date, year) {
-            var birthday = new Date([month, day.toString(), year].join(""));
+            var birthday = new Date([month, date.toString(), year].join(""));
 
             var daysTotal,
                 daysAvailable;
 
             // do stuff here
-            // return {
-            //     lived: 0,
-            //     total: 0
-            // };
+            return {
+                lived: 0,
+                total: 0
+            };
         },
 
         getBirthday: function() {
@@ -47,7 +47,7 @@ Elixir = {
                 dotsList.push(Elixir.c.dotHTML.greyscale);
             }
 
-            for (i = 0; i < colord; i ++) {
+            for (i = 0; i < colored; i ++) {
                 dotsList.push(Elixir.c.dotHTML.colored);
             }
 
@@ -56,7 +56,7 @@ Elixir = {
         },
 
         go: function(evt) {
-            if (!evt || evt.keyCode != 13) return;
+            if (evt instanceof KeyboardEvent && evt.keyCode != 13) return;
 
             // master task runner for "go" button
             var dateObject = Elixir.f.getBirthday();
@@ -68,7 +68,7 @@ Elixir = {
             );
 
             Elixir.f.drawDots(dotCounts.lived, dotCounts.total);
-            
+            scrollToHeight(window.innerHeight, 320);
         },
 
     },
@@ -93,8 +93,8 @@ function init() {
     // add event listeners
     Object.keys(Elixir.e).forEach(function(identifier) {
         var eventName = identifier.split(" ")[0],
-            selector = identifier.split(" ").splice(0, 1).join(" "), // this should probably be less messy
-            fn = Elixir.e[identifier];
+            selector = identifier.split(" ").splice(1).join(" "), // this should probably be less messy
+            fn = Elixir.f[Elixir.e[identifier]];
 
         eventAdder(selector, eventName, fn);
     });

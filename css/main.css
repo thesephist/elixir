@@ -50,7 +50,7 @@ input {
     border-radius: 6px; }
     .question input#b-month {
       width: 5em; }
-    .question input#b-day {
+    .question input#b-date {
       width: 2em; }
     .question input#b-year {
       width: 3em; }
