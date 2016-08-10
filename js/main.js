@@ -16,15 +16,31 @@ Elixir = {
     f: { // functions
       
         getDays: function(month, date, year) {
-            var birthday = new Date([month, date.toString(), year].join(""));
+            var birthday = new Date([month, date.toString(), year].join(" "));
+
+            // TODO custom modal
+            if (birthday == "Invalid Date") {
+                alert("Hm. Could you type that a bit differently? Doesn't seem like a date to me.");
+                return;
+            }
 
             var daysTotal,
-                daysAvailable;
+                daysLived;
+          
+            // TODO take genders into account
+            
+            daysTotal = Elixir.c.meanAge.mean * 365;
+            daysLived = Math.floor((new Date().getTime() - birthday.getTime()) / 86400000);
 
-            // do stuff here
+            // TODO custom modal here as well
+            if (daysLived < 0) {
+                alert("Hey, you aren't born yet! Stahp.");
+                return;
+            }
+
             return {
-                lived: 0,
-                total: 0
+                lived: daysLived,
+                total: daysTotal
             };
         },
 
@@ -43,12 +59,12 @@ Elixir = {
             // TODO improve this scenario
             if (greyscale < 0) greyscale = 0;
 
-            for (i = 0; i < greyscale; i ++) {
-                dotsList.push(Elixir.c.dotHTML.greyscale);
-            }
-
             for (i = 0; i < colored; i ++) {
                 dotsList.push(Elixir.c.dotHTML.colored);
+            }
+
+            for (i = 0; i < greyscale; i ++) {
+                dotsList.push(Elixir.c.dotHTML.greyscale);
             }
 
             $(".dot-container").innerHTML = dotsList.join("");
@@ -56,9 +72,9 @@ Elixir = {
         },
 
         go: function(evt) {
+            // master task runner for "go" button
             if (evt instanceof KeyboardEvent && evt.keyCode != 13) return;
 
-            // master task runner for "go" button
             var dateObject = Elixir.f.getBirthday();
             
             var dotCounts = Elixir.f.getDays(
@@ -66,6 +82,9 @@ Elixir = {
                   dateObject.date,
                   dateObject.year
             );
+
+            // errors
+            if (!dotCounts) return;
 
             Elixir.f.drawDots(dotCounts.lived, dotCounts.total);
             scrollToHeight(window.innerHeight, 320);
@@ -75,14 +94,15 @@ Elixir = {
     
     c: { // constants
         
-        MeanAge: {
-            male: 75,
-            female: 85,
-            total: 80
+        meanAge: {
+            male: 76,
+            female: 81,
+            mean: 78.7
         },
 
         dotHTML: {
-            colored: "<div class='colord dot'></div>",
+            // TODO change this into using sprites for performance boost on larger numbers of elements...
+            colored: "<div class='colored dot'></div>",
             greyscale: "<div class='dot'></div>"
         }
 

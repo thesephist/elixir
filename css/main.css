@@ -11,7 +11,9 @@ body {
   background: #e9e9e9;
   height: 100vh;
   width: 100vw;
-  font-family: "Baskerville", "Times New Roman", serif; }
+  font-family: "Baskerville", "Times New Roman", serif;
+  /* cover bottom border */
+  margin-bottom: 8px; }
   body::after {
     content: "";
     display: block;
@@ -62,23 +64,24 @@ input {
 
 .prompt-container {
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   position: relative; }
 
 .dot-container {
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   position: relative; }
   .dot-container .dot {
     background: #aaa;
-    border-radius: 12px;
-    width: 24px;
-    height: 24px;
-    margin: 20px; }
-    .dot-container .dot .colored {
-      background: #e9e9e9; }
+    border-radius: 2.5px;
+    width: 5px;
+    height: 5px;
+    margin: 1px;
+    float: left; }
+    .dot-container .dot.colored {
+      background: #990033; }
 
 button.go {
   display: block;
