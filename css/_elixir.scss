@@ -1,7 +1,10 @@
 @mixin cover {
     overflow: hidden;
     min-height: 100vh;
-    width: 100vw;
+    width: 80vw;
+    min-width: 300px;
+    max-width: 1000px;
+    margin: 18px auto;
     position: relative;
 }
 

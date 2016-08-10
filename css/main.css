@@ -65,19 +65,25 @@ input {
 .prompt-container {
   overflow: hidden;
   min-height: 100vh;
-  width: 100vw;
+  width: 80vw;
+  min-width: 300px;
+  max-width: 1000px;
+  margin: 18px auto;
   position: relative; }
 
 .dot-container {
   overflow: hidden;
   min-height: 100vh;
-  width: 100vw;
+  width: 80vw;
+  min-width: 300px;
+  max-width: 1000px;
+  margin: 18px auto;
   position: relative; }
   .dot-container .dot {
     background: #aaa;
-    border-radius: 2.5px;
-    width: 5px;
-    height: 5px;
+    border-radius: 2px;
+    width: 4px;
+    height: 4px;
     margin: 1px;
     float: left; }
     .dot-container .dot.colored {
