@@ -53,21 +53,23 @@ Elixir = {
         },
 
         drawDots: function(colored, total) {
-            var dotsList = [],
-                greyscale = total - colored;
-
             // TODO improve this scenario
-            if (greyscale < 0) greyscale = 0;
+            if (colored > total) total = colored;
 
-            for (i = 0; i < colored; i ++) {
-                dotsList.push(Elixir.c.dotHTML.colored);
-            }
+            // TODO set an event listener on window.onresize to recalc this part
+            var horizCount = 10, // something
+                spriteSize = Elixir.c.dot.spriteSize;
 
-            for (i = 0; i < greyscale; i ++) {
-                dotsList.push(Elixir.c.dotHTML.greyscale);
-            }
+            var livedHeight = Math.floor(colored / horizCount) * spriteSize,
+                livedWidth = (colored % horizCount) * spriteSize,
+                totalHeight = Math.floor(total / horizCount) * spriteSize,
+                totalWidth = (total % horizCount) * spriteSize;
 
-            $(".dot-container").innerHTML = dotsList.join("");
+            $("#dots-lived .rect").css("height", `${livedHeight}px`);
+            $("#dots-lived .line").css("width", `${livedWidth}px`);
+
+            $("#dots-total .rect").css("height", `${totalHeight}px`);
+            $("#dots-total .rect").css("width", `${totalwidth}px`);
             
         },
 
@@ -100,10 +102,8 @@ Elixir = {
             mean: 78.7
         },
 
-        dotHTML: {
-            // TODO change this into using sprites for performance boost on larger numbers of elements...
-            colored: "<div class='colored dot'></div>",
-            greyscale: "<div class='dot'></div>"
+        dot: {
+            spriteSize: 6px;
         }
 
     }
