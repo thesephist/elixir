@@ -57,7 +57,13 @@ Elixir = {
             if (colored > total) total = colored;
 
             // TODO set an event listener on window.onresize to recalc this part
-            var horizCount = 10, // something
+
+            // clear out any clipping margins
+            var dc = $("#dot-container")[0];
+            dc.style.width = "";
+            dc.style.width = dc.style.width - dc.style.width % 5; // make this get the right width from 
+            
+            var horizCount = dc.style.width / 5,
                 spriteSize = Elixir.c.dot.spriteSize;
 
             var livedHeight = Math.floor(colored / horizCount) * spriteSize,
@@ -70,7 +76,7 @@ Elixir = {
 
             $("#dots-total .rect").css("height", `${totalHeight}px`);
             $("#dots-total .rect").css("width", `${totalwidth}px`);
-            
+
         },
 
         go: function(evt) {
@@ -103,7 +109,7 @@ Elixir = {
         },
 
         dot: {
-            spriteSize: 6px;
+            spriteSize: 5px;
         }
 
     }
