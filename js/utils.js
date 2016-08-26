@@ -27,3 +27,8 @@ function scrollToHeight(targetPos, milliseconds) {
     }, 16)
 }
 
+function getWidthOf(element) {
+    var rect = element.getBoundingClientRect();
+
+    return rect.right - rect.left;
+}

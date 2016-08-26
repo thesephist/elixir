@@ -49,7 +49,8 @@ input {
     font-style: italic;
     color: #333;
     font-size: 50px;
-    border-radius: 6px; }
+    border-radius: 6px;
+    transition: background-color .3s; }
     .question input#b-month {
       width: 5em; }
     .question input#b-date {
@@ -79,15 +80,27 @@ input {
   max-width: 1000px;
   margin: 18px auto;
   position: relative; }
-  .dot-container .dot {
-    background: #aaa;
-    border-radius: 2px;
-    width: 4px;
-    height: 4px;
-    margin: 1px;
-    float: left; }
-    .dot-container .dot.colored {
-      background: #990033; }
+  .dot-container #dots-lived, .dot-container #dots-total {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 8px;
+    box-sizing: border-box; }
+  .dot-container #dots-lived > div {
+    background: url("/sprites/lived.png") repeat;
+    background-size: 5px; }
+  .dot-container #dots-total > div {
+    background: url("/sprites/left.png") repeat;
+    background-size: 5px; }
+  .dot-container .rect {
+    width: 100%;
+    height: 0;
+    /* height set by JS */ }
+  .dot-container .line {
+    height: 5px;
+    width: 0;
+    /* width set by JS */ }
 
 button.go {
   display: block;

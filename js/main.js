@@ -53,22 +53,34 @@ Elixir = {
         },
 
         drawDots: function(colored, total) {
-            var dotsList = [],
-                greyscale = total - colored;
-
             // TODO improve this scenario
-            if (greyscale < 0) greyscale = 0;
+            if (colored > total) total = colored;
 
-            for (i = 0; i < colored; i ++) {
-                dotsList.push(Elixir.c.dotHTML.colored);
-            }
+            // TODO set an event listener on window.onresize to recalc this part
 
-            for (i = 0; i < greyscale; i ++) {
-                dotsList.push(Elixir.c.dotHTML.greyscale);
-            }
+            // clear out any clipping margins
+            var dc = $(".dot-container");
+            var spriteSize = Elixir.c.dot.spriteSize;
+            dc.style.width = ""; // normalize
 
-            $(".dot-container").innerHTML = dotsList.join("");
+            var dcWidth = getWidthOf(dc);
+            dc.style.width = `${dcWidth - dcWidth % spriteSize}px`; // make this get the right width from 
             
+            var horizCount = parseFloat(dc.style.width) / spriteSize;
+
+            var livedHeight = Math.floor(colored / horizCount) * spriteSize,
+                livedWidth = (colored % horizCount) * spriteSize,
+                totalHeight = Math.floor(total / horizCount) * spriteSize,
+                totalWidth = (total % horizCount) * spriteSize;
+
+            $("#dots-lived .rect").style.height = `${livedHeight}px`;
+            $("#dots-lived .line").style.width = `${livedWidth}px`;
+
+            $("#dots-total .rect").style.height = `${totalHeight}px`;
+            $("#dots-total .line").style.width = `${totalWidth}px`;
+
+            dc.style.display = "block";
+
         },
 
         go: function(evt) {
@@ -100,16 +112,17 @@ Elixir = {
             mean: 78.7
         },
 
-        dotHTML: {
-            // TODO change this into using sprites for performance boost on larger numbers of elements...
-            colored: "<div class='colored dot'></div>",
-            greyscale: "<div class='dot'></div>"
+        dot: {
+            spriteSize: 5
         }
 
     }
 };
 
 function init() {
+
+    $(".dot-container").style.display = "none";
+
     // add event listeners
     Object.keys(Elixir.e).forEach(function(identifier) {
         var eventName = identifier.split(" ")[0],
