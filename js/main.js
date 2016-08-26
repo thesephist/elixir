@@ -62,6 +62,7 @@ Elixir = {
             var dc = $(".dot-container");
             var spriteSize = Elixir.c.dot.spriteSize;
             dc.style.width = ""; // normalize
+            dc.style.display = "block";
 
             var dcWidth = getWidthOf(dc);
             dc.style.width = `${dcWidth - dcWidth % spriteSize}px`; // make this get the right width from 
@@ -78,9 +79,6 @@ Elixir = {
 
             $("#dots-total .rect").style.height = `${totalHeight}px`;
             $("#dots-total .line").style.width = `${totalWidth}px`;
-
-            dc.style.display = "block";
-
         },
 
         go: function(evt) {
