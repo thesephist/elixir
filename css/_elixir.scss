@@ -28,6 +28,7 @@
         color: #333;
         font-size: 50px;
         border-radius: 6px;
+        transition: background-color .3s;
 
         &#b-month {
             width: 5em; 
@@ -76,10 +77,12 @@
 
     #dots-lived > div {
         background: url("/sprites/lived.png") repeat;
+        background-size: 5px;
     }
 
     #dots-total > div {
         background: url("/sprites/left.png") repeat;
+        background-size: 5px;
     }
 
     .rect {
@@ -88,7 +91,7 @@
     }
 
     .line {
-        height: 10px; /* some dot radius TODO */
+        height: 5px;
         width: 0; /* width set by JS */
     }
 

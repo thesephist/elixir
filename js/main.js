@@ -59,23 +59,27 @@ Elixir = {
             // TODO set an event listener on window.onresize to recalc this part
 
             // clear out any clipping margins
-            var dc = $("#dot-container")[0];
-            dc.style.width = "";
-            dc.style.width = dc.style.width - dc.style.width % 5; // make this get the right width from 
+            var dc = $(".dot-container");
+            var spriteSize = Elixir.c.dot.spriteSize;
+            dc.style.width = ""; // normalize
+
+            var dcWidth = getWidthOf(dc);
+            dc.style.width = `${dcWidth - dcWidth % spriteSize}px`; // make this get the right width from 
             
-            var horizCount = dc.style.width / 5,
-                spriteSize = Elixir.c.dot.spriteSize;
+            var horizCount = parseFloat(dc.style.width) / spriteSize;
 
             var livedHeight = Math.floor(colored / horizCount) * spriteSize,
                 livedWidth = (colored % horizCount) * spriteSize,
                 totalHeight = Math.floor(total / horizCount) * spriteSize,
                 totalWidth = (total % horizCount) * spriteSize;
 
-            $("#dots-lived .rect").css("height", `${livedHeight}px`);
-            $("#dots-lived .line").css("width", `${livedWidth}px`);
+            $("#dots-lived .rect").style.height = `${livedHeight}px`;
+            $("#dots-lived .line").style.width = `${livedWidth}px`;
 
-            $("#dots-total .rect").css("height", `${totalHeight}px`);
-            $("#dots-total .rect").css("width", `${totalwidth}px`);
+            $("#dots-total .rect").style.height = `${totalHeight}px`;
+            $("#dots-total .line").style.width = `${totalWidth}px`;
+
+            dc.style.display = "block";
 
         },
 
@@ -109,13 +113,16 @@ Elixir = {
         },
 
         dot: {
-            spriteSize: 5px;
+            spriteSize: 5
         }
 
     }
 };
 
 function init() {
+
+    $(".dot-container").style.display = "none";
+
     // add event listeners
     Object.keys(Elixir.e).forEach(function(identifier) {
         var eventName = identifier.split(" ")[0],
