@@ -32,3 +32,16 @@ function getWidthOf(element) {
 
     return rect.right - rect.left;
 }
+
+function closeAlert() {
+    $(".modal").classList.remove("show");
+
+    $(".modal button").removeEventListener("click", closeAlert);
+}
+
+function openAlert(message) {
+    $(".modal p").innerText = message;
+    $(".modal").classList.add("show");
+
+    $(".modal button").addEventListener("click", closeAlert);
+}

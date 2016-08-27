@@ -18,9 +18,8 @@ Elixir = {
         getDays: function(month, date, year) {
             var birthday = new Date([month, date.toString(), year].join(" "));
 
-            // TODO custom modal
             if (birthday == "Invalid Date") {
-                alert("Hm. Could you type that a bit differently? Doesn't seem like a date to me.");
+                openAlert("Hm. Could you type that a bit differently? Doesn't seem like a date to me.");
                 return;
             }
 
@@ -32,9 +31,8 @@ Elixir = {
             daysTotal = Elixir.c.meanAge.mean * 365;
             daysLived = Math.floor((new Date().getTime() - birthday.getTime()) / 86400000);
 
-            // TODO custom modal here as well
             if (daysLived < 0) {
-                alert("Hey, you aren't born yet! Stahp.");
+                openAlert("Hey, you aren't born yet! Stahp.");
                 return;
             }
 

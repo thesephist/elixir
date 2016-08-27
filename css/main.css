@@ -122,4 +122,43 @@ button.go {
   button.go:active {
     opacity: 0.9; }
 
+.modal {
+  position: fixed;
+  color: #e9e9e9;
+  border-radius: 8px;
+  height: auto;
+  min-height: 150px;
+  width: 300px;
+  top: 200px;
+  left: calc(50vw - 150px);
+  box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.3);
+  transition: transform .2s, -webkit-transform .2s, opacity .2s;
+  opacity: 0;
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  padding: 16px;
+  pointer-events: none;
+  z-index: 9; }
+  .modal.show {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    pointer-events: all; }
+  .modal::before {
+    content: "";
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; }
+  .modal .message {
+    font-size: 24px; }
+  .modal button.confirm {
+    float: right; }
+
 /*# sourceMappingURL=main.css.map */
