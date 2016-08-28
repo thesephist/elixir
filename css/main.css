@@ -23,7 +23,7 @@ body {
     bottom: 0;
     height: 6px;
     width: 100%;
-    background: #234567; }
+    background: #a35eaa; }
 
 input {
   background: #e9e9e9;
@@ -70,7 +70,12 @@ input {
   min-width: 300px;
   max-width: 1000px;
   margin: 18px auto;
-  position: relative; }
+  position: relative;
+  transition: filter .3s;
+  transition: -webkit-filter .3s; }
+  .blur .prompt-container {
+    filter: blur(4px);
+    -webkit-filter: blur(4px); }
 
 .dot-container {
   overflow: hidden;
@@ -79,7 +84,12 @@ input {
   min-width: 300px;
   max-width: 1000px;
   margin: 18px auto;
-  position: relative; }
+  position: relative;
+  transition: filter .3s;
+  transition: -webkit-filter .3s; }
+  .blur .dot-container {
+    filter: blur(4px);
+    -webkit-filter: blur(4px); }
   .dot-container #dots-lived, .dot-container #dots-total {
     position: absolute;
     top: 0;
@@ -110,16 +120,84 @@ button.go {
   width: 5em;
   height: 1.5em;
   box-shadow: none;
-  color: #234567;
-  border: 2px solid #234567;
+  color: #a35eaa;
+  border: 2px solid #a35eaa;
   border-radius: 8px;
   background: transparent;
   transition: color .2s, background-color .2s;
-  cursor: pointer; }
+  cursor: pointer;
+  line-height: 1.5em; }
   button.go:hover {
     color: #e9e9e9;
-    background: #234567; }
+    background: #a35eaa; }
   button.go:active {
     opacity: 0.9; }
+
+.modal {
+  position: fixed;
+  color: #e9e9e9;
+  border-radius: 8px;
+  height: auto;
+  min-height: 150px;
+  width: 300px;
+  top: 200px;
+  left: calc(50vw - 150px);
+  box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.3);
+  transition: transform .2s, -webkit-transform .2s, opacity .2s;
+  opacity: 0;
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  padding: 16px;
+  pointer-events: none;
+  z-index: 9; }
+  .modal.show {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    pointer-events: all; }
+  .modal::before {
+    content: "";
+    display: block;
+    height: 140vh;
+    width: 140vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: calc(-200px - 20vh);
+    left: calc(150px - 70vw);
+    z-index: -1; }
+  .modal::after {
+    content: "";
+    display: block;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    border-radius: 8px; }
+  .modal .message {
+    font-size: 20px;
+    color: #333333;
+    margin: 0; }
+  .modal button.confirm {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    background: transparent;
+    border: 2px solid #a35eaa;
+    border-radius: 3px;
+    font-family: "Baskerville", "Times New Roman", serif;
+    color: #a35eaa;
+    height: 30px;
+    width: 60px;
+    text-align: center;
+    line-height: 24px;
+    cursor: pointer;
+    transition: background .2s;
+    font-size: 20px; }
+    .modal button.confirm:hover {
+      background: #a35eaa;
+      color: white; }
 
 /*# sourceMappingURL=main.css.map */

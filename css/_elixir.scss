@@ -6,6 +6,13 @@
     max-width: 1000px;
     margin: 18px auto;
     position: relative;
+    transition: filter .3s;
+    transition: -webkit-filter .3s;
+
+    .blur & {
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
+    }
 }
 
 .intro {
@@ -112,6 +119,7 @@ button.go {
     background: transparent;
     transition: color .2s, background-color .2s;
     cursor: pointer;
+    line-height: 1.5em;
 
     &:hover {
         color: $bg-color;
