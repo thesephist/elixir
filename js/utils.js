@@ -35,6 +35,7 @@ function getWidthOf(element) {
 
 function closeAlert() {
     $(".modal").classList.remove("show");
+    document.body.classList.remove("blur");
 
     $(".modal button").removeEventListener("click", closeAlert);
 }
@@ -42,6 +43,7 @@ function closeAlert() {
 function openAlert(message) {
     $(".modal p").innerText = message;
     $(".modal").classList.add("show");
+    document.body.classList.add("blur");
 
     $(".modal button").addEventListener("click", closeAlert);
 }
