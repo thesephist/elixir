@@ -5,9 +5,9 @@
     border-radius: 8px;
     height: auto;
     min-height: 150px;
-    width: 300px;
+    width: 400px;
     top: 200px;
-    left: calc(50vw - 150px);
+    left: calc(50vw - 200px);
     box-shadow: 0 3px 10px -3px rgba(0, 0, 0, 0.3);
     transition: transform .2s, -webkit-transform .2s, opacity .2s;
     opacity: 0;
@@ -32,7 +32,7 @@
         background-color: rgba(0, 0, 0, 0.3);
         position: absolute;
         top: calc(-200px - 20vh);
-        left: calc(150px - 70vw);
+        left: calc(200px - 70vw);
         z-index: -1;
     }
 
@@ -53,6 +53,7 @@
         font-size: 20px;
         color: $font-color;
         margin: 0;
+        line-height: 1.3em;
     }
 
     button.confirm {

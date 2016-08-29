@@ -10,11 +10,17 @@ var Elixir = {
 Elixir = {
     e: { // events
         "keydown input": "go",
-        "click button.go": "go"
+        "click button.go": "go",
+        "click .about": "openAbout"
     },
 
     f: { // functions
       
+        openAbout: function(evt) {
+            openAlert(Elixir.c.about);
+            return;
+        },
+
         getDays: function(month, date, year) {
             var birthday = new Date([month, date.toString(), year].join(" "));
 
@@ -110,7 +116,9 @@ Elixir = {
 
         dot: {
             spriteSize: 5
-        }
+        },
+
+        about: "Time is one of the rarest things in our lives, but also the most abundant things we'll ever have. But we never really realize how few days we have in our lives until it's right in front of us. This is a small web app to show you a visual summary of how far you've come, and how far you've left to go.\n - Linus \n @thesephist"
 
     }
 };

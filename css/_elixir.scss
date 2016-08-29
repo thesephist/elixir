@@ -6,8 +6,8 @@
     max-width: 1000px;
     margin: 18px auto;
     position: relative;
-    transition: filter .3s;
-    transition: -webkit-filter .3s;
+    // transition: filter .3s;
+    // transition: -webkit-filter .3s;
 
     .blur & {
         filter: blur(4px);
@@ -132,3 +132,15 @@ button.go {
 
 }
 
+.about {
+    position: fixed;
+    font-family: $font-family;
+    font-size: 20px;
+    right: 60px;
+    top: 40px;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
