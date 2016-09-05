@@ -32,8 +32,6 @@ Elixir = {
             var daysTotal,
                 daysLived;
           
-            // TODO take genders into account
-            
             daysTotal = Elixir.c.meanAge.mean * 365;
             daysLived = Math.floor((new Date().getTime() - birthday.getTime()) / 86400000);
 
@@ -57,10 +55,7 @@ Elixir = {
         },
 
         drawDots: function(colored, total) {
-            // TODO improve this scenario
-            if (colored > total) total = colored;
-
-            // TODO set an event listener on window.onresize to recalc this part
+            if (colored > total - 1800) total = colored + 1800; // never be less than five years away from death
 
             // clear out any clipping margins
             var dc = $(".dot-container");
@@ -83,6 +78,8 @@ Elixir = {
 
             $("#dots-total .rect").style.height = `${totalHeight}px`;
             $("#dots-total .line").style.width = `${totalWidth}px`;
+            
+            $(".dot-container").style.height = `${totalHeight + 300}px`;
         },
 
         go: function(evt) {
@@ -118,7 +115,7 @@ Elixir = {
             spriteSize: 5
         },
 
-        about: "Time is one of the rarest things in our lives, but also the most abundant things we'll ever have. But we never really realize how few days we have in our lives until it's right in front of us. This is a small web app to show you a visual summary of how far you've come, and how far you've left to go.\n - Linus \n @thesephist"
+        about: "Time is one of the rarest things in our lives, but also the most abundant things we'll ever have. But we never really realize how few days we have in our lives until it's right in front of us. This is a small web app to show you a visual summary of how far you've come, and how far you've left to go.\n\n- Linus \n @thesephist"
 
     }
 };
@@ -135,8 +132,6 @@ function init() {
 
         eventAdder(selector, eventName, fn);
     });
-
-    // ...
 
     console.info("Elixir initialized");
 

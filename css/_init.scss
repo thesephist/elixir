@@ -20,9 +20,6 @@ body {
     width: 100vw;
     font-family: $font-family;
     
-    /* cover bottom border */
-    margin-bottom: 8px;
-
     &::after {
         content: "";
         display: block;
